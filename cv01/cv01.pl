@@ -35,11 +35,11 @@ parent(lenka, otakar).
 % RULES
 % Grandparent and great-grandparent
 grandparent(Self, Child):-
-    parent(Self, Parent),
-    parent(Parent, Child).
+    parent(Self, P),
+    parent(P, Child).
 great_grandparent(Self, Child):-
-    grandparent(Self, Parent),
-    parent(Parent, Child).
+    grandparent(Self, P),
+    parent(P, Child).
 
 % Children
 child(Self, Parent):-
@@ -60,8 +60,8 @@ mother(Self, Child):-
 % Siblings
 % Generalized siblings (they share at least one common parent regardless of gender)
 sibling(Self, Sibling):-
-    parent(Parent, Self),
-    parent(Parent, Sibling),
+    parent(P, Self),
+    parent(P, Sibling),
     Self \== Sibling.
 % Full siblings (they share the same father AND the same mother)
 % Unnecessary, as we have only biological siblings in this lineage
