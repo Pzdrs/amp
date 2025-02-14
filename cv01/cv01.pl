@@ -59,13 +59,13 @@ mother(Self, Child):-
 
 % Siblings
 % Generalized siblings (they share at least one common parent regardless of gender)
-siblings(Self, Sibling):-
+sibling(Self, Sibling):-
     parent(Parent, Self),
     parent(Parent, Sibling),
     Self \== Sibling.
 % Full siblings (they share the same father AND the same mother)
 % Unnecessary, as we have only biological siblings in this lineage
-full_siblings(Self, Sibling):-
+full_sibling(Self, Sibling):-
     father(F, Self), father(F, Sibling),
     mother(M, Self), mother(M, Sibling),
     Self \== Sibling.
@@ -80,8 +80,8 @@ sister(Self, Sibling):-
 uncle(Self, Nibling):-
     male(Self),
     parent(P, Nibling),
-    siblings(Self, P).
+    sibling(Self, P).
 aunt(Self, Nibling):-
     female(Self),
     parent(P, Nibling),
-    siblings(Self, P).
+    sibling(Self, P).
