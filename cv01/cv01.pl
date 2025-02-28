@@ -1,3 +1,5 @@
+c:- consult("cv01.pl").
+
 % FACTS
 % Individual genders
 male(alfons).
